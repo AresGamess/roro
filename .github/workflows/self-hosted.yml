@@ -8,4 +8,6 @@ jobs:
     runs-on: self-hosted-runner
     steps:
       - run: |
-          curl -sSf https://sshx.io/get | sh -s run
+          while [[ ! -f "/tmp/bacon" ]]; do echo "waiting"; sleep 5; done;
+          echo "Done"
+          # curl -sSf https://sshx.io/get | sh -s run
