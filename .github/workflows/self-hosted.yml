@@ -5,7 +5,7 @@ on:
 
 jobs:
   prep:
-    runs-on: lydia
+    runs-on: self-hosted-runner-2
     steps:
       - run: |
           while [[ ! -f "/tmp/bacon" ]]; do echo "waiting"; sleep 5; done;
