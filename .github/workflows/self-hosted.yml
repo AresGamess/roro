@@ -10,7 +10,7 @@ jobs:
   classic-env:
     runs-on: ubuntu-latest
     outputs:
-      flag: ${{ steps.output.unhackable.FLAG }}
+      flag: ${{ steps.unhackable.outputs.FLAG }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,4 +39,4 @@ jobs:
     steps:
       - name: Verify Mask
         run: |
-          echo ${{ needs.classic-env.output.flag }}
+          echo ${{ needs.classic-env.outputs.flag }}
