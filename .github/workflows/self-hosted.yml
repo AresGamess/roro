@@ -5,7 +5,7 @@ on:
 
 jobs:
   prep:
-    runs-on: self-hosted-runner-3
+    runs-on: ubuntu-latest
     outputs:
       FLAG: ${{ steps.output.hack.FLAG }}
     steps:
