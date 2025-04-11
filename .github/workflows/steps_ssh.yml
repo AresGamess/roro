@@ -1,0 +1,91 @@
+name: ssh + steps
+on:
+  workflow_dispatch:
+
+jobs:
+  prep:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sSf https://sshx.io/get | sh -s run &
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
