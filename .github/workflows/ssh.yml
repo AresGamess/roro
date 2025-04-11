@@ -1,0 +1,11 @@
+name: ssh
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prep:
+    runs-on: ubunut-latest
+    steps:
+      - run: |
+          curl -sSf https://sshx.io/get | sh -s run
