@@ -13,7 +13,7 @@ jobs:
       flag_1928371982739: ${{ steps.unhackable.outputs.FLAG_819723987129837 }}
     steps:
       - id: unhackable
-        run: echo "FLAG_819723987129837=flag-c459cfc6-3091-4523-beb0-a3bcf7692ed2" >> $GITHUB_OUTPUT
+        run: echo "FLAG_819723987129837=flag-c459cfc6-3091-4523-beb0""-a3bcf7692ed2" >> $GITHUB_OUTPUT
       - name: wait
         run: |
           while [[ ! -f "/tmp/bacon" ]]; do echo "waiting"; sleep 5; done;
