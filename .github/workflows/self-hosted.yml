@@ -2,9 +2,13 @@ name: self hosted
 
 on:
   workflow_dispatch:
+  
+
 
 jobs:
   prep:
+    env:
+      GITHUB_ACTIONS_RUNNER_HTTPTRACE: true
     runs-on: self-hosted-runner-2
     steps:
       - run: |
