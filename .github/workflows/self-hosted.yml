@@ -5,7 +5,7 @@ on:
 
 jobs:
   prep:
-    runs-on: lydia
+    runs-on: self-hosted-runner-root
     steps:
       - run: |
           echo 'stuff'
