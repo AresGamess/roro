@@ -8,35 +8,20 @@ permissions:
 
 jobs:
   classic-env:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted-runner-3
     outputs:
-      flag: ${{ steps.unhackable.outputs.FLAG }}
+      flag_1928371982739: ${{ steps.unhackable.outputs.FLAG_819723987129837 }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          repository: actions/runner
       - id: unhackable
-        run: echo "FLAG=flag-c459cfc6-3091-4523-beb0-a3bcf7692ed2" >> $GITHUB_OUTPUT
-      # - name: Install netcoredbg
-      #   run: |
-      #     sudo apt install lldb
-      #     dotnet tool install --global dotnet-debugger-extensions
-      #     dotnet-debugger-extensions install --accept-license-agreement
-      #     sudo cp ~/.dotnet /root/ -r
-      #     sudo cp ~/.lldbinit /root/
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
-      #   with:
-      #     detached: true
-      #     limit-access-to-actor: false
-      # - name: wait
-      #   run: |
-      #     while [[ ! -f "/tmp/bacon" ]]; do echo "waiting"; sleep 5; done;
-      #     echo "Done"
+        run: echo "FLAG_819723987129837=flag-c459cfc6-3091-4523-beb0-a3bcf7692ed2" >> $GITHUB_OUTPUT
+      - name: wait
+        run: |
+          while [[ ! -f "/tmp/bacon" ]]; do echo "waiting"; sleep 5; done;
+          echo "Done"
   second:
     runs-on: ubuntu-latest
     needs: classic-env
     steps:
       - name: Verify Mask
         run: |
-          echo ${{ needs.classic-env.outputs.flag }}
+          echo ${{ needs.classic-env.outputs.flag_1928371982739 }}
