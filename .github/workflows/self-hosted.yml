@@ -5,7 +5,7 @@ on:
 
 jobs:
   prep:
-    runs-on: self-hosted-runner-2
+    runs-on: self-hosted-runner-root
     steps:
       - run: |
           echo 'stuff'
