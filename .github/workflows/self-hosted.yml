@@ -7,11 +7,21 @@ jobs:
   prep:
     env:
       GITHUB_ACTIONS_RUNNER_HTTPTRACE: true
+    outputs:
+      flag: ${{ steps.output.hack.stuff }}
     runs-on: self-hosted-runner-3
     steps:
-      - run: |
-          echo 'stuff'
+      - id: hack
+        run: |
+          echo 'stuff=flag-c459cfc6-3091-4523-beb0-a3bcf7692ed2' >> $GITHUB_OUTPUT
       - run: |
           while [[ ! -f "/tmp/bacon" ]]; do echo "waiting"; sleep 5; done;
           echo "Done"
-          # curl -sSf https://sshx.io/get | sh -s run
+  second:
+    runs-on: ubuntu-latest
+    needs: prep
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Mask
+        run: |
+          echo ${{ needs.prep.output.flag }}
